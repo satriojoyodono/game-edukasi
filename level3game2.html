@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Tebak Gambar</title>
+    <link rel="stylesheet" href="css/level3game2.css">
+</head>
+<body>
+    <header>
+        Game Tebak Gambar
+        <button class="back-button" onclick="history.back()">Kembali</button>
+    </header>
+    <div class="container">
+        <div class="image-container" id="imageContainer">
+            <img src="" alt="Gambar" id="image">
+        </div>
+        <div class="options-container" id="optionsContainer"></div>
+        <div class="message" id="message"></div>
+        <div class="score" id="score"></div>
+    </div>
+    <footer>
+        &copy; 2025 PINTAR BAHASA ARAB. All rights reserved.
+    </footer>
+    <script>
+        const images = [
+            { src: 'gambar/Kucing.jpg', answer: 'kucing', arabic: 'قِطَّة' },
+            { src: 'gambar/Anjing.jpg', answer: 'anjing', arabic: 'كَلْب' },
+            { src: 'gambar/Burung.jpg', answer: 'burung', arabic: 'طَائِر' },
+            { src: 'gambar/Sapi.jpg', answer: 'sapi', arabic: 'بَقَرَة' },
+            { src: 'gambar/Kuda.jpg', answer: 'kuda', arabic: 'حِصَان' },
+            { src: 'gambar/Gajah.jpg', answer: 'gajah', arabic: 'فِيل' },
+            { src: 'gambar/kambing.jpg', answer: 'kambing', arabic: 'مَاعِز' },
+            { src: 'gambar/Ikan.jpg', answer: 'ikan', arabic: 'سَمَكَة' },
+            { src: 'gambar/Ayam.jpg', answer: 'ayam', arabic: 'دَجَاج' }
+        ];
+
+        let currentImageIndex = 0;
+        let selectedImages = [];
+        let score = 0;
+
+        function getRandomImages() {
+            const shuffled = images.sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, 5);
+        }
+
+        function loadNextImage() {
+            if (currentImageIndex < selectedImages.length) {
+                const currentImage = selectedImages[currentImageIndex];
+                document.getElementById('image').style.display = 'block';
+                document.getElementById('image').src = currentImage.src;
+                generateOptions(currentImage.arabic);
+                document.getElementById('message').innerText = '';
+            } else {
+                document.getElementById('optionsContainer').innerHTML = ''; 
+                if (score === selectedImages.length) {
+                    document.getElementById('imageContainer').innerHTML = `
+                        <img src="gambar/jempol.gif" alt="GIF Lucu" style="max-width: 100%; max-height: 100%;">
+                    `;
+                    document.getElementById('message').innerHTML = `
+                        <p>Selamat! Skor akhir Anda adalah ${score} dari ${selectedImages.length}.</p>
+                    `;
+                } else {
+                    document.getElementById('message').innerHTML = `
+                        <p>Skor akhir Anda adalah ${score} dari ${selectedImages.length}.</p>
+                    `;
+                }
+                document.getElementById('image').style.display = 'none';
+            }
+        }
+
+        function generateOptions(correctArabic) {
+            const optionsContainer = document.getElementById('optionsContainer');
+            optionsContainer.innerHTML = ''; 
+
+            const shuffledImages = images.sort(() => 0.5 - Math.random()).slice(0, 4);
+            if (!shuffledImages.some(img => img.arabic === correctArabic)) {
+                shuffledImages[Math.floor(Math.random() * 4)] = selectedImages[currentImageIndex];
+            }
+
+            shuffledImages.forEach(option => {
+                const button = document.createElement('button');
+                button.classList.add('option-button');
+                button.innerText = option.arabic;
+                button.onclick = () => checkAnswer(option.arabic);
+                optionsContainer.appendChild(button);
+            });
+        }
+
+        function checkAnswer(selectedArabic) {
+            if (selectedArabic === selectedImages[currentImageIndex].arabic) {
+                document.getElementById('message').innerText = 'Jawaban benar!';
+                score++;
+                document.getElementById('score').innerText = `Skor: ${score}`;
+            } else {
+                document.getElementById('message').innerText = 'Jawaban salah, coba lagi!';
+            }
+            currentImageIndex++;
+            setTimeout(loadNextImage, 1000);
+        }
+
+        window.onload = () => {
+            selectedImages = getRandomImages();
+            loadNextImage();
+            document.getElementById('score').innerText = `Skor: ${score}`;
+        };
+    </script>
+</body>
+</html>

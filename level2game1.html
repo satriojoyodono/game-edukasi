@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Tic-Tac-Toe Bahasa Arab</title>
+    <link rel="stylesheet" href="css/game1.css">
+</head>
+<body>
+    <header>
+        Game Tic-Tac-Toe Bahasa Arab
+        <button class="back-button" onclick="history.back()">Kembali</button>
+    </header>
+    <div class="container">
+        <div class="message" id="message">Giliran pemain X</div>
+        <div class="board-container">
+            <div class="board" id="board"></div>
+            <div class="choices" id="choices"></div>
+        </div>
+        <div class="message-container">
+            <div class="verification-message" id="verificationMessage"></div>
+        </div>
+    </div>
+    <div class="fireworks" id="fireworks"></div>
+    <footer>
+        &copy; 2025 PINTAR BAHASA ARAB. All rights reserved.
+    </footer>
+    <script>
+        const board = document.getElementById('board');
+        const choices = document.getElementById('choices');
+        const message = document.getElementById('message');
+        const verificationMessage = document.getElementById('verificationMessage');
+        const fireworksContainer = document.getElementById('fireworks');
+        let currentPlayer = 'X';
+        let boardState = ['', '', '', '', '', '', '', '', ''];
+        let gameActive = true;
+
+        const animals = [
+            { image: 'gambar/kucing.jpg', arabic: 'قِطٌّ' },
+            { image: 'gambar/anjing.jpg', arabic: 'كَلْبٌ' },
+            { image: 'gambar/ayam.jpg', arabic: 'دَجَاج' },
+            { image: 'gambar/sapi.jpg', arabic: 'بَقَرَةٌ' },
+            { image: 'gambar/kuda.jpg', arabic: 'حِصَانٌ' },
+            { image: 'gambar/gajah.jpg', arabic: 'فِيلٌ' },
+            { image: 'gambar/kambing.jpg', arabic: 'مَاعِزٌ' },
+            { image: 'gambar/ikan.jpg', arabic: 'سَمَكَةٌ' },
+            { image: 'gambar/burung.jpg', arabic: 'طَائِرٌ' }
+        ];
+
+        const winningConditions = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6]
+        ];
+
+        function handleDrop(event) {
+            event.preventDefault();
+            const cell = event.target.closest('.cell');
+            const cellIndex = parseInt(cell.getAttribute('data-index'));
+            const word = event.dataTransfer.getData('text');
+            const correctWord = animals[cellIndex].arabic;
+
+            if (boardState[cellIndex] !== '' || !gameActive) {
+                return;
+            }
+
+            if (word === correctWord) {
+                boardState[cellIndex] = currentPlayer;
+                cell.innerHTML = currentPlayer;
+                cell.style.backgroundColor = currentPlayer === 'X' ? '#00b4d8' : '#00b4d8';
+                verificationMessage.innerText = `Benar! Pemain ${currentPlayer}`;
+            } else {
+                boardState[cellIndex] = currentPlayer === 'X' ? 'O' : 'X';
+                cell.innerHTML = currentPlayer === 'X' ? 'O' : 'X';
+                cell.style.backgroundColor = currentPlayer === 'X' ? '#00b4d8' : '#00b4d8';
+                verificationMessage.innerText = `Salah! Pemain ${currentPlayer}`;
+            }
+
+            if (checkWinner()) {
+                message.innerText = `Pemain ${currentPlayer} Menang!`;
+                gameActive = false;
+                triggerFireworks();
+            } else if (!boardState.includes('')) {
+                message.innerText = 'Hasil Imbang!';
+                gameActive = false;
+            } else {
+                currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+                message.innerText = `Giliran pemain ${currentPlayer}`;
+            }
+        }
+
+        function checkWinner() {
+            return winningConditions.some(condition => {
+                return condition.every(index => boardState[index] === currentPlayer);
+            });
+        }
+
+        function triggerFireworks() {
+            for (let i = 0; i < 10; i++) {
+                const firework = document.createElement('div');
+                firework.classList.add('firework');
+                firework.style.left = `${Math.random() * 100}%`;
+                firework.style.top = `${Math.random() * 100}%`;
+                fireworksContainer.appendChild(firework);
+
+                setTimeout(() => {
+                    firework.remove();
+                }, 1000);
+            }
+        }
+
+        function initializeBoard() {
+            board.innerHTML = '';
+            choices.innerHTML = '';
+            boardState = ['', '', '', '', '', '', '', '', ''];
+            gameActive = true;
+            currentPlayer = 'X';
+            message.innerText = `Giliran pemain ${currentPlayer}`;
+            verificationMessage.innerText = '';
+
+            shuffle(animals);
+
+            animals.forEach((animal, index) => {
+                const cell = document.createElement('div');
+                cell.classList.add('cell');
+                cell.setAttribute('data-index', index);
+                cell.innerHTML = `<img src="${animal.image}" alt="${animal.arabic}">`;
+                cell.ondragover = event => event.preventDefault();
+                cell.ondrop = handleDrop;
+                board.appendChild(cell);
+            });
+
+            animals.forEach((animal, index) => {
+                const choice = document.createElement('div');
+                choice.classList.add('choice');
+                choice.setAttribute('draggable', true);
+                choice.innerText = animal.arabic;
+                choice.ondragstart = event => event.dataTransfer.setData('text', animal.arabic);
+                choices.appendChild(choice);
+            });
+        }
+
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        initializeBoard();
+    </script>
+</body>
+</html>

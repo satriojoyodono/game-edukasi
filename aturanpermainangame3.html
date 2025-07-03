@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aturan Permainan Puzzle Huruf Hijaiyah</title>
+    <link rel="stylesheet" href="css/aturanpermainangame3.css">
+</head>
+<body>
+    <header>
+        <button class="back-button" onclick="history.back()">Kembali</button>
+        Aturan Permainan Puzzle Huruf Hijaiyah
+    </header>
+    <div class="container">
+        <h2>Selamat datang di Game Puzzle Huruf Hijaiyah!</h2>
+        <p>Aturan permainan:</p>
+        <ul>
+            <p><li>Pemain harus menyusun huruf hijaiyah secara berurutan dalam kotak kosong yang disediakan.</li></p>
+            <p><li>Terdapat 5 level dengan jumlah huruf yang semakin bertambah pada setiap level.</li></p>
+            <p><li>Drag dan drop huruf ke dalam kotak sesuai urutan hijaiyah yang benar dari kanan ke kiri.</li></p>
+            <p><li>Klik tombol "Periksa Jawaban" setelah menyusun untuk mengecek apakah urutan sudah benar.</li></p>
+            <p><li>Setiap jawaban yang benar mendapatkan 1 poin.</li></p>
+        </ul>
+        <div class="input-container">
+            <label for="levelSelect">Mulai Permainan:</label><br>
+            <button onclick="location.href= 'game3.html'">Mulai</button>
+        </div>
+    </div>
+    <footer>
+        &copy; 2025 PINTAR BAHASA ARAB. All rights reserved.
+    </footer>
+    <script>
+        function setLevel(level) {
+            localStorage.setItem('gameLevel', level); // Simpan level ke localStorage
+            window.location.href = 'game_puzzle.html'; // Ganti dengan nama file permainan Anda
+        }
+    </script>
+</body>
+</html>

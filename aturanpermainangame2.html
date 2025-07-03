@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aturan Permainan</title>
+    <link rel="stylesheet" href="css/aturanpermainangame2.css">
+   
+</head>
+<body>
+    <header>
+        <button class="back-button" onclick="history.back()">Kembali</button>
+        Aturan Permainan
+    </header>
+    <div class="container">
+        <h2>Selamat datang di Game Tebak Gambar!</h2>
+        <p>Aturan permainan:</p>
+        <ul>
+            <p><li>Disajikan gambar dan kamu harus menebak gambar tersebut.</li></p>
+            <p><li>Masukkan jawaban kamu di kolom yang disediakan.</li></p>
+            <p><li>Skor akan dihitung berdasarkan jawaban yang benar.</li></p>
+            <p><li>Pilih tingkat kesulitan sebelum memulai permainan.</li></p>
+        </ul>
+        <div class="input-container">
+            <label for="levelSelect">Pilih Level:</label><br>
+            <button onclick="location.href= 'game2.html'">Level 1</button>
+            <button onclick="location.href='level2game2.html'">Level 2</button>
+            <button onclick="location.href='level3game2.html'">Level 3</button>
+        </div>
+    </div>
+    <footer>
+        &copy; 2025 PINTAR BAHASA ARAB. All rights reserved.
+    </footer>
+    <script>
+        function setLevel(level) {
+            localStorage.setItem('gameLevel', level); // Simpan level ke localStorage
+            window.location.href = 'game2.html'; // Ganti dengan nama file permainan Anda
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Tebak Gambar</title>
+    <link rel="stylesheet" href="css/level2game2.css">
+
+</head>
+<body>
+    <header>
+        Game Tebak Gambar
+        <button class="back-button" onclick="history.back()">Kembali</button>
+    </header>
+    <div class="container">
+        <div class="image-container" id="imageContainer">
+            <img src="" alt="Gambar" id="image">
+        </div>
+        <div class="description-container">
+            <div id="arabicDescription"></div>
+        </div>
+        <div class="input-container">
+            <input type="text" id="guessInput" placeholder="Masukkan jawaban">
+            <button onclick="checkAnswer()">Cek Jawaban</button>
+        </div>
+        <div class="message" id="message"></div>
+        <div class="score" id="score"></div>
+    </div>
+    <footer>
+        &copy; 2025 PINTAR BAHASA ARAB. All rights reserved.
+    </footer>
+    <script>
+        const images = [
+    { src: 'gambar/buku.png', answer: 'buku', arabic: 'اَلْكِتَابٌ' },
+    { src: 'gambar/Pulpen.jpg', answer: 'pulpen', arabic: 'اَلْقَلَمُ' },
+    { src: 'gambar/Meja.jpg', answer: 'meja', arabic: 'اَلطَّاوِلَةُ' },
+    { src: 'gambar/Kursi.jpg', answer: 'kursi', arabic: 'اَلْكُرْسِيُّ' },
+    { src: 'gambar/Pintu.jpg', answer: 'pintu', arabic: 'اَلْبَابُ' },
+    { src: 'gambar/Jendela.jpg', answer: 'jendela', arabic: 'اَلنَّافِذَةُ' },
+    { src: 'gambar/Kulkas.jpg', answer: 'kulkas', arabic: 'اَلثَّلَّاجَةُ' },
+    { src: 'gambar/Televisi.jpg', answer: 'televisi', arabic: 'اَلتِّلْفَازُ' },
+];
+
+
+        let currentImageIndex = 0;
+        let selectedImages = [];
+        let score = 0;
+
+        function getRandomImages() {
+            const shuffled = images.sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, 5);
+        }
+
+        function loadNextImage() {
+    if (currentImageIndex < selectedImages.length) {
+        const currentImage = selectedImages[currentImageIndex];
+        document.getElementById('image').style.display = 'block';
+        document.getElementById('image').src = currentImage.src;
+        document.getElementById('arabicDescription').innerText = currentImage.arabic;
+        document.getElementById('guessInput').value = '';
+        document.getElementById('message').innerText = '';
+    } else {
+        // Tampilkan GIF lucu dan skor akhir
+        document.getElementById('imageContainer').innerHTML = `
+            <img src="gambar/jempol.gif" alt="GIF Lucu" style="max-width: 100%; max-height: 100%;">
+        `;
+        document.getElementById('message').innerText = `Selamat! Anda telah menyelesaikan semua gambar! Skor akhir Anda adalah ${score} dari ${selectedImages.length}.`;
+        
+        // Hapus deskripsi Arab
+        document.getElementById('arabicDescription').innerText = '';
+
+        // Nonaktifkan dan sembunyikan input dan tombol
+        document.getElementById('guessInput').style.display = 'none';
+        document.querySelector('.input-container button').style.display = 'none';
+    }
+}
+
+
+        function checkAnswer() {
+            const userAnswer = document.getElementById('guessInput').value.trim().toLowerCase();
+            if (userAnswer === selectedImages[currentImageIndex].answer) {
+                document.getElementById('message').innerText = 'Jawaban benar!';
+                score++;
+                document.getElementById('score').innerText = `Skor: ${score}`;
+                currentImageIndex++;
+                setTimeout(loadNextImage, 1000);
+            } else {
+                document.getElementById('message').innerText = 'Jawaban salah, coba lagi!';
+            }
+        }
+
+        window.onload = () => {
+            selectedImages = getRandomImages();
+            loadNextImage();
+            document.getElementById('score').innerText = `Skor: ${score}`;
+        };
+        
+    </script>
+</body>
+</html>

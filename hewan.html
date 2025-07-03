@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Hewan</title>
+    <link rel="stylesheet" href="css/hewan.css">
+</head>
+<body>
+    <header>
+        Materi Hewan
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="game.html">Games</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    <div class="content">
+        <h1>Hewan-Hewan dalam Bahasa Arab</h1>
+        <div class="detail">
+            <p>Belajar bahasa Arab dengan mengenali nama-nama hewan yang sering kita temui sehari-hari. Mengenal nama hewan dalam bahasa Arab dapat membantu memperkaya kosa kata dan kemampuan berbicara. Mari kita mulai dengan beberapa hewan yang umum.</p>
+            <div class="items">
+                <div class="item">
+                    <img src="gambar/kucing.jpg" alt="Kucing">
+                    <div>
+                        <h3>قِطَّة</h3>
+                        <p>(Qiṭṭa)</p>
+                        <p>Kucing</p>
+                        <button onclick="playSound('suara/kucing.mp3')">Dengar</button>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="gambar/anjing.jpg" alt="Anjing">
+                    <div>
+                        <h3>كَلْب</h3>
+                        <p>(Kalb)</p>
+                        <p>Anjing</p>
+                        <button onclick="playSound('suara/anjing.mp3')">Dengar</button>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="gambar/burung.jpg" alt="Burung">
+                    <div>
+                        <h3>طَائِر</h3>
+                        <p>(Ṭā'ir)</p>
+                        <p>Burung</p>
+                        <button onclick="playSound('suara/burung.mp3')">Dengar</button>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="gambar/sapi.jpg" alt="Sapi">
+                    <div>
+                        <h3>بَقَرَة</h3>
+                        <p>(Baqara)</p>
+                        <p>Sapi</p>
+                        <button onclick="playSound('suara/sapi.mp3')">Dengar</button>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="gambar/kuda.jpg" alt="Kuda">
+                    <div>
+                        <h3>حِصَان</h3>
+                        <p>(Ḥiṣān)</p>
+                        <p>Kuda</p>
+                        <button onclick="playSound('suara/kuda.mp3')">Dengar</button>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="gambar/gajah.jpg" alt="Gajah">
+                    <div>
+                        <h3>فِيل</h3>
+                        <p>(Fīl)</p>
+                        <p>Gajah</p>
+                        <button onclick="playSound('suara/gajah.mp3')">Dengar</button>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="gambar/kambing.jpg" alt="Kambing">
+                    <div>
+                        <h3>مَاعِز</h3>
+                        <p>(Mā'iz)</p>
+                        <p>Kambing</p>
+                        <button onclick="playSound('suara/kambing.mp3')">Dengar</button>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="gambar/ikan.jpg" alt="Ikan">
+                    <div>
+                        <h3>سَمَكَة</h3>
+                        <p>(Samaka)</p>
+                        <p>Ikan</p>
+                        <button onclick="playSound('suara/ikan.mp3')">Dengar</button>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="gambar/ayam.jpg" alt="ayam">
+                <div>
+                    <h3>دَجَاج</h3>
+                    <p>(dajaj)</p>
+                    <p>Ayam</p>
+                    <button onclick="playSound('suara/ayam.mp3')">Dengar</button>
+                </div>
+            </div>
+                <!-- Tambahkan hewan-hewan lainnya sesuai kebutuhan -->
+            </div>
+            <button class="back-button" onclick="history.back()">Kembali</button>
+        </div>
+    </div>
+    <footer>
+        &copy; 2025 PINTAR BAHASA ARAB. All rights reserved.
+    </footer>
+    <script>
+        function playSound(url) {
+            new Audio(url).play();
+        }
+    </script>
+</body>
+</html>

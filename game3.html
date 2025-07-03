@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Puzzle Huruf Hijaiyah - Multi Level</title>
+    <link rel="stylesheet" href="css/game3.css">
+</head>
+<body>
+    <header>
+        Game Puzzle Huruf Hijaiyah
+        <button class="back-button" onclick="history.back()">Kembali</button>
+    </header>
+
+    <div class="container">
+        <h1>Susun huruf hijaiyah sesuai dengan gambar</h1>
+        <div class="image-container">
+            <img id="questionImage" src="" alt="Gambar Soal" style="width: 150px; height: auto;">
+        </div>
+        <div class="puzzle-container" id="puzzleContainer"></div>
+        <div class="drop-zone-container">
+            <h3>Letakkan huruf di sini:</h3>
+            <div class="drop-zones" id="dropZones" style="display: flex; flex-direction: row-reverse;"></div>
+        </div>
+        <button onclick="checkOrder()">Periksa Jawaban</button>
+        <div class="message" id="message"></div>
+        <div class="score">Skor: <span id="score">0</span></div>
+    </div>
+
+    <footer>
+        &copy; 2024 PINTAR BAHASA ARAB. All rights reserved.
+    </footer>
+
+    <script>
+        const levels = [
+            { image: "gambar/kucing.jpg", letters: ["ق", "ط", "ة"] },
+            { image: "gambar/meja.jpg", letters: ["ط", "ا", "و", "ل", "ة"] },
+            { image: "gambar/guru.jpg", letters: ["م", "ع", "ل", "م"] },
+            { image: "gambar/pintu.jpg", letters: ["ب", "ا", "ب"] },
+          
+        ];
+        
+        let currentLevel = 0;
+        let score = 0;
+        const puzzleContainer = document.getElementById("puzzleContainer");
+        const dropZonesContainer = document.getElementById("dropZones");
+        const messageElement = document.getElementById("message");
+        const questionImage = document.getElementById("questionImage");
+        const scoreElement = document.getElementById("score");
+
+        function startLevel() {
+            messageElement.textContent = "";
+            puzzleContainer.innerHTML = "";
+            dropZonesContainer.innerHTML = "";
+            
+            questionImage.src = levels[currentLevel].image;
+            const shuffledLetters = [...levels[currentLevel].letters].sort(() => Math.random() - 0.5);
+
+            shuffledLetters.forEach(letter => {
+                const piece = document.createElement("div");
+                piece.className = "puzzle-piece";
+                piece.textContent = letter;
+                piece.draggable = true;
+                piece.addEventListener("dragstart", dragStart);
+                puzzleContainer.appendChild(piece);
+            });
+
+            levels[currentLevel].letters.forEach(() => {
+                const dropZone = document.createElement("div");
+                dropZone.className = "drop-zone";
+                dropZone.addEventListener("dragover", dragOver);
+                dropZone.addEventListener("drop", drop);
+                dropZonesContainer.appendChild(dropZone);
+            });
+        }
+
+        function dragStart(event) {
+            event.dataTransfer.setData("text", event.target.textContent);
+        }
+
+        function dragOver(event) {
+            event.preventDefault();
+        }
+
+        function drop(event) {
+            event.preventDefault();
+            const letter = event.dataTransfer.getData("text");
+            if (!event.target.textContent) {
+                event.target.textContent = letter;
+            }
+        }
+
+        function checkOrder() {
+            const userAnswer = Array.from(dropZonesContainer.children).map(zone => zone.textContent).reverse();
+            if (JSON.stringify(userAnswer) === JSON.stringify(levels[currentLevel].letters)) {
+                messageElement.textContent = "Benar! 🎉";
+                messageElement.style.color = "green";
+                score++;
+            } else {
+                messageElement.textContent = "Salah. Coba lagi!";
+                messageElement.style.color = "red";
+            }
+            scoreElement.textContent = score;
+            setTimeout(nextLevel, 1000);
+        }
+
+        function nextLevel() {
+            if (currentLevel < levels.length - 1) {
+                currentLevel++;
+                startLevel();
+            } else {
+                showCongratsPage();
+            }
+        }
+
+        function showCongratsPage() {
+            let content = `
+             <div style="text-align: center; margin-top: 50px;">
+                <h1 style="color: #0077b6; font-size: 2.5em;">Permainan Selesai!</h1>
+                <p style="font-size: 1.5em; color: #0077b6;">Skor Anda: ${score} / ${levels.length}</p>
+            `;
+            
+            if (score === levels.length) {
+                content += `
+                    <img src="gambar/jempol.gif" alt="Jempol" style="width: 200px; border-radius: 8px; margin-top: 20px;">
+                `;
+            }
+            
+            content += `
+                <br><br>
+                <button onclick="window.location.reload()" style="background-color: #0077b6; color: white; padding: 10px 20px; font-size: 1em; border: none; border-radius: 5px; cursor: pointer; margin-right: 10px;">
+                    Main Lagi
+                </button>
+                <button onclick="window.location.href='game.html'" style="background-color: #00b4d8; color: white; padding: 10px 20px; font-size: 1em; border: none; border-radius: 5px; cursor: pointer;">
+                    Kembali
+                </button>
+            </div>
+            `;
+            document.body.innerHTML = content;
+        }
+
+        startLevel();
+    </script>
+</body>
+</html>

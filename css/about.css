@@ -1,0 +1,74 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fafafa;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: linear-gradient(to right, #00b4d8, #0077b6);
+    padding: 20px;
+    text-align: center;
+    color: white;
+    font-size: 2.5em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: #00b4d8;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: color 0.3s, transform 0.3s;
+}
+
+nav a:hover {
+    color: #90e0ef;
+    transform: scale(1.1);
+}
+
+.content {
+    text-align: center;
+    padding: 50px;
+}
+
+.content h1 {
+    font-family: 'Georgia', serif;
+    font-size: 2em;
+    color: #0077b6;
+}
+
+.content p {
+    font-size: 1em;
+    color: #333;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+.content img {
+    width: 50%; /* Mengatur ukuran gambar menjadi 50% dari lebar kontainer */
+    max-width: 400px; /* Membatasi ukuran maksimum gambar */
+    height: auto; /* Mempertahankan rasio gambar */
+    margin: 20px 0; /* Menambahkan jarak di sekitar gambar */
+    border-radius: 10px; /* Menambahkan efek sudut melengkung */
+}
+
+footer {
+    background: linear-gradient(to right, #00b4d8, #0077b6);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}

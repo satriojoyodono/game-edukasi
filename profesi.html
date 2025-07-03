@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Profesi</title>
+    <link rel="stylesheet" href="css/profesi.css">
+   
+</head>
+<body>
+    <header>
+        Materi Profesi
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="game.html">Games</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    <div class="content">
+        <h1>Profesi dalam Bahasa Arab</h1>
+        <div class="detail">
+            <p>Belajar bahasa Arab dengan mengenali nama-nama profesi yang sering kita temui sehari-hari. Mengenal nama profesi dalam bahasa Arab dapat membantu memperkaya kosa kata dan kemampuan berbicara. Mari kita mulai dengan beberapa profesi yang umum.</p>
+            <div class="items">
+                <div class="item">
+                    <img src="gambar/dokter.png" alt="Dokter">
+                    <div>
+                        <h3>طَبِيْبٌ</h3>
+                        <p class="translit">(thobiibun)</p>
+                        <p class="indonesian">Dokter</p>
+                        <div class="button-container">
+                            <button onclick="playSound('suara/dokter.mp3')">Dengar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="gambar/guru.png" alt="Guru">
+                    <div>
+                        <h3>مُدَرِّسٌ</h3>
+                        <p class="translit">(mudarrisun)</p>
+                        <p class="indonesian">Guru</p>
+                        <div class="button-container">
+                            <button onclick="playSound('suara/guru.mp3')">Dengar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="gambar/polisi.jpg" alt="Polisi">
+                    <div>
+                        <h3>شُرْطِيٌّ</h3>
+                        <p class="translit">(syurthiyyun)</p>
+                        <p class="indonesian">Polisi</p>
+                        <div class="button-container">
+                            <button onclick="playSound('suara/polisi.mp3')">Dengar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="gambar/petani.png" alt="Petani">
+                    <div>
+                        <h3>فَلَّاح</h3>
+                        <p class="translit">(fallāḥ)</p>
+                        <p class="indonesian">Petani</p>
+                        <div class="button-container">
+                            <button onclick="playSound('suara/petani.mp3')">Dengar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="gambar/pemadam.png" alt="Pemadam Kebakaran">
+                    <div>
+                        <h3>رَجُلُ الإِطْفَاء</h3>
+                        <p class="translit">(rajul al-iṭfā)</p>
+                        <p class="indonesian">Pemadam Kebakaran</p>
+                        <div class="button-container">
+                            <button onclick="playSound('suara/pemadam.mp3')">Dengar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="gambar/montir.png" alt="Montir">
+                    <div>
+                        <h3>ميكانيكي</h3>
+                        <p class="translit">(mīkānīkī)</p>
+                        <p class="indonesian">Montir</p>
+                        <div class="button-container">
+                            <button onclick="playSound('suara/montir.mp3')">Dengar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="gambar/pilot.png" alt="Pilot">
+                    <div>
+                        <h3>طَيَّارٌ</h3>
+                        <p class="translit">(thoyyaarun)</p>
+                        <p class="indonesian">Pilot</p>
+                        <div class="button-container">
+                            <button onclick="playSound('suara/pilot.mp3')">Dengar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="gambar/nelayan.png" alt="Nelayan">
+                    <div>
+                        <h3>صَيَّاد</h3>
+                        <p class="translit">(ṣayyād)</p>
+                        <p class="indonesian">Nelayan</p>
+                        <div class="button-container">
+                            <button onclick="playSound('suara/nelayan.mp3')">Dengar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="gambar/tentara.png" alt="Tentara">
+                    <div>
+                        <h3>جُنْدِيٌّ</h3>
+                        <p class="translit">(jundiyyun)</p>
+                        <p class="indonesian">Tentara</p>
+                        <div class="button-container">
+                            <button onclick="playSound('suara/tentara.mp3')">Dengar</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tambahkan profesi-profesi lainnya sesuai kebutuhan -->
+            </div>
+            <button class="back-button" onclick="history.back()">Kembali</button>
+        </div>
+    </div>
+    <footer>
+        &copy; 2025 PINTAR BAHASA ARAB. All rights reserved.
+    </footer>
+    <script>
+        function playSound(url) {
+            new Audio(url).play();
+        }
+    </script>
+</body>
+</html>

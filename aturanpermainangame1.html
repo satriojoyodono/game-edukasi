@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aturan Permainan Tic Tac Toe</title>
+    <link rel="stylesheet" href="css/aturanpermainangame1.css">
+
+</head>
+<body>
+    <header>
+        <button class="back-button" onclick="history.back()">Kembali</button>
+        Aturan Permainan Tic Tac Toe
+    </header>
+    <div class="container">
+        <h2>Selamat datang di Game Tic Tac Toe!</h2>
+        <p>Aturan permainan:</p>
+        <ul>
+            <p><li>Pemain: Dua pemain bergiliran menggunakan simbol "X" dan "O".</li></p>
+            <p><li>Papan terdiri dari 9 kotak yang disusun dalam 3 baris dan 3 kolom.</li></p>
+            <p><li>Pemain bergiliran untuk menempatkan simbol mereka di kotak kosong.</li></p>
+            <p><li>Pemain menang jika berhasil menempatkan tiga simbol dalam satu baris (horizontal, vertikal, atau diagonal).</li></p>
+            <p><li>Jika semua kotak terisi dan tidak ada yang menang, permainan berakhir seri.</li></p>
+        </ul>
+        <div class="input-container">
+            <label for="levelSelect">Pilih Level Kesulitan:</label><br>
+            <button onclick="location.href= 'game1.html'">Level 1</button>
+            <button onclick="location.href='level2game1.html'">Level 2</button>
+            <button onclick="location.href='level3game1.html'">Level 3</button>
+        </div>
+    </div>
+    <footer>
+        &copy; 2025 PINTAR BAHASA ARAB. All rights reserved.
+    </footer>
+    <script>
+        function setLevel(level) {
+            localStorage.setItem('gameLevel', level); // Simpan level ke localStorage
+            window.location.href = 'game1.html'; // Ganti dengan nama file permainan Anda
+        }
+    </script>
+</body>
+</html>

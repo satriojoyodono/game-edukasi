@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Materi Barang</title>
+        <link rel="stylesheet" href="css/barang.css">
+    </head>
+    <body>
+        <header>
+            Materi Barang
+        </header>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="game.html">Games</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <div class="content">
+            <h1>Barang-Barang dalam Bahasa Arab</h1>
+            <p>Belajar bahasa Arab dengan mengenali nama-nama barang yang sering kita temui sehari-hari. Mengenal nama barang dalam bahasa Arab dapat membantu memperkaya kosa kata dan kemampuan berbicara. Mari kita mulai dengan beberapa barang yang umum.</p>
+            <div class="items">
+                <div class="item">
+                    <img src="gambar/buku.png" alt="Kitab">
+                    <div>
+                        <h3>اَلْكِتَابٌ</h3>
+                        <p>(Al-Kitāb)</p>
+                        <p>Kitab (Buku)</p>
+                        <div class="button-container">
+                            <button onclick="playSound('suara/buku.mp3')">Dengar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="gambar/pulpen.jpg" alt="Pena">
+                    <div>
+                        <h3>اَلْقَلَمُ</h3>
+                        <p>(Al-Qalam)</p>
+                        <p>Pena (Pulpen)</p>
+                        <div class="button-container">
+                            <button onclick="playSound('suara/pulpen.mp3')">Dengar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="gambar/meja.jpg" alt="Meja">
+                    <div>
+                        <h3>اَلطَّاوِلَةُ</h3>
+                        <p>(At-Tāwilah)</p>
+                        <p>Meja</p>
+                        <div class="button-container">
+                            <button onclick="playSound('suara/meja.mp3')">Dengar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="gambar/kursi.jpg" alt="Kursi">
+                    <div>
+                        <h3>اَلْكُرْسِيُّ</h3>
+                        <p>(Al-Kursī)</p>
+                        <p>Kursi</p>
+                        <div class="button-container">
+                            <button onclick="playSound('suara/kursi.mp3')">Dengar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="gambar/pintu.jpg" alt="Pintu">
+                    <div>
+                        <h3>اَلْبَابُ </h3>
+                        <p>(Al-Bāb)</p>
+                        <p>Pintu</p>
+                        <div class="button-container">
+                            <button onclick="playSound('suara/pintu.mp3')">Dengar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="gambar/jendela.jpg" alt="Jendela">
+                    <div>
+                        <h3>اَلنَّافِذَةُ </h3>
+                        <p>(An-Nāfidhah)</p>
+                        <p>Jendela</p>
+                        <div class="button-container">
+                            <button onclick="playSound('suara/jendela.mp3')">Dengar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="gambar/kulkas.jpg" alt="Kulkas">
+                    <div>
+                        <h3>اَلثَّلَّاجَةُ </h3>
+                        <p>(Ath-Thalājah)</p>
+                        <p>Kulkas</p>
+                        <div class="button-container">
+                            <button onclick="playSound('suara/kulkas.mp3')">Dengar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="gambar/televisi.jpg" alt="Televisi">
+                    <div>
+                        <h3>اَلتِّلْفَازُ  </h3>
+                        <p>(At-Tilfaz)</p>
+                        <p>Televisi</p>
+                        <div class="button-container">
+                            <button onclick="playSound('suara/televisi.mp3')">Dengar</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tambahkan barang-barang lainnya sesuai kebutuhan -->
+            </div>
+            <button class="back-button" onclick="history.back()">Kembali</button>
+        </div>
+        <footer>
+            &copy; 2025 PINTAR BAHASA ARAB. All rights reserved.
+        </footer>
+        <script>
+            function playSound(url) {
+                new Audio(url).play();
+            }
+        </script>
+    </body>
+</html>
