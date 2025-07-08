@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Tebak Gambar</title>
+    <title>Game Tebak Gambar - PROFESI</title>
     <link rel="stylesheet" href="css/level2game2.css">
-
 </head>
 <body>
     <header>
-        Game Tebak Gambar
+        Game Tebak Gambar 
         <button class="back-button" onclick="history.back()">Kembali</button>
     </header>
     <div class="container">
@@ -31,16 +30,16 @@
     </footer>
     <script>
         const images = [
-    { src: 'gambar/buku.png', answer: 'buku', arabic: 'اَلْكِتَابٌ' },
-    { src: 'gambar/Pulpen.jpg', answer: 'pulpen', arabic: 'اَلْقَلَمُ' },
-    { src: 'gambar/Meja.jpg', answer: 'meja', arabic: 'اَلطَّاوِلَةُ' },
-    { src: 'gambar/Kursi.jpg', answer: 'kursi', arabic: 'اَلْكُرْسِيُّ' },
-    { src: 'gambar/Pintu.jpg', answer: 'pintu', arabic: 'اَلْبَابُ' },
-    { src: 'gambar/Jendela.jpg', answer: 'jendela', arabic: 'اَلنَّافِذَةُ' },
-    { src: 'gambar/Kulkas.jpg', answer: 'kulkas', arabic: 'اَلثَّلَّاجَةُ' },
-    { src: 'gambar/Televisi.jpg', answer: 'televisi', arabic: 'اَلتِّلْفَازُ' },
-];
-
+           { src: 'gambar/dokter.png', answer: 'dokter', arabic: 'طَبِيْبٌ', latin: 'Thabīb' },
+            { src: 'gambar/guru.png', answer: 'guru', arabic: 'مُدَرِّسٌ', latin: 'Mudarris' },
+            { src: 'gambar/petani.png', answer: 'petani', arabic: 'فَلَّاح', latin: 'Fallāḥ' },
+            { src: 'gambar/polisi.png', answer: 'polisi', arabic: 'شُرْطِيٌّ', latin: 'Shurṭī' },
+            { src: 'gambar/pemadam.png', answer: 'pemadam kebakaran', arabic: 'رجل اطفاء', latin: 'Rajul iṭfāʼ' },
+            { src: 'gambar/tentara.png', answer: 'tentara', arabic: 'جندي', latin: 'Jundī' },
+            { src: 'gambar/montir.png', answer: 'montir', arabic: 'ميكانيكي', latin: 'Mīkānīkī' },
+            { src: 'gambar/pilot.png', answer: 'pilot', arabic: 'طَيَّارٌ', latin: 'Ṭayyār' },
+            { src: 'gambar/nelayan.png', answer: 'nelayan', arabic: 'صَيَّاد', latin: 'Ṣayyād' }
+        ];
 
         let currentImageIndex = 0;
         let selectedImages = [];
@@ -52,29 +51,28 @@
         }
 
         function loadNextImage() {
-    if (currentImageIndex < selectedImages.length) {
-        const currentImage = selectedImages[currentImageIndex];
-        document.getElementById('image').style.display = 'block';
-        document.getElementById('image').src = currentImage.src;
-        document.getElementById('arabicDescription').innerText = currentImage.arabic;
-        document.getElementById('guessInput').value = '';
-        document.getElementById('message').innerText = '';
-    } else {
-        // Tampilkan GIF lucu dan skor akhir
-        document.getElementById('imageContainer').innerHTML = `
-            <img src="gambar/jempol.gif" alt="GIF Lucu" style="max-width: 100%; max-height: 100%;">
-        `;
-        document.getElementById('message').innerText = `Selamat! Anda telah menyelesaikan semua gambar! Skor akhir Anda adalah ${score} dari ${selectedImages.length}.`;
-        
-        // Hapus deskripsi Arab
-        document.getElementById('arabicDescription').innerText = '';
+            if (currentImageIndex < selectedImages.length) {
+                const currentImage = selectedImages[currentImageIndex];
+                document.getElementById('image').style.display = 'block';
+                document.getElementById('image').src = currentImage.src;
+                document.getElementById('arabicDescription').innerText = currentImage.arabic;
+                document.getElementById('guessInput').value = '';
+                document.getElementById('message').innerText = '';
+            } else {
+                // Tampilkan GIF lucu dan skor akhir
+                document.getElementById('imageContainer').innerHTML = `
+                    <img src="gambar/jempol.gif" alt="GIF Lucu" style="max-width: 100%; max-height: 100%;">
+                `;
+                document.getElementById('message').innerText = `Selamat! Anda telah menyelesaikan semua gambar! Skor akhir Anda adalah ${score} dari ${selectedImages.length}.`;
 
-        // Nonaktifkan dan sembunyikan input dan tombol
-        document.getElementById('guessInput').style.display = 'none';
-        document.querySelector('.input-container button').style.display = 'none';
-    }
-}
+                // Hapus deskripsi Arab
+                document.getElementById('arabicDescription').innerText = '';
 
+                // Nonaktifkan dan sembunyikan input dan tombol
+                document.getElementById('guessInput').style.display = 'none';
+                document.querySelector('.input-container button').style.display = 'none';
+            }
+        }
 
         function checkAnswer() {
             const userAnswer = document.getElementById('guessInput').value.trim().toLowerCase();
@@ -94,7 +92,7 @@
             loadNextImage();
             document.getElementById('score').innerText = `Skor: ${score}`;
         };
-        
     </script>
 </body>
 </html>
+
