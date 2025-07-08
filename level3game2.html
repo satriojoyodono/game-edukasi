@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Tebak Gambar</title>
+    <title>Game Tebak Gambar - PROFESI</title>
     <link rel="stylesheet" href="css/level3game2.css">
 </head>
 <body>
     <header>
-        Game Tebak Gambar
+        Game Tebak Gambar - PROFESI
         <button class="back-button" onclick="history.back()">Kembali</button>
     </header>
     <div class="container">
         <div class="image-container" id="imageContainer">
             <img src="" alt="Gambar" id="image">
+            <div id="latinText" style="margin-top: 10px; font-size: 1.2em; color: #333;"></div>
         </div>
         <div class="options-container" id="optionsContainer"></div>
         <div class="message" id="message"></div>
@@ -22,17 +23,18 @@
     <footer>
         &copy; 2025 PINTAR BAHASA ARAB. All rights reserved.
     </footer>
+
     <script>
         const images = [
-            { src: 'gambar/Kucing.jpg', answer: 'kucing', arabic: 'قِطَّة' },
-            { src: 'gambar/Anjing.jpg', answer: 'anjing', arabic: 'كَلْب' },
-            { src: 'gambar/Burung.jpg', answer: 'burung', arabic: 'طَائِر' },
-            { src: 'gambar/Sapi.jpg', answer: 'sapi', arabic: 'بَقَرَة' },
-            { src: 'gambar/Kuda.jpg', answer: 'kuda', arabic: 'حِصَان' },
-            { src: 'gambar/Gajah.jpg', answer: 'gajah', arabic: 'فِيل' },
-            { src: 'gambar/kambing.jpg', answer: 'kambing', arabic: 'مَاعِز' },
-            { src: 'gambar/Ikan.jpg', answer: 'ikan', arabic: 'سَمَكَة' },
-            { src: 'gambar/Ayam.jpg', answer: 'ayam', arabic: 'دَجَاج' }
+            { src: 'gambar/dokter.png', answer: 'dokter', arabic: 'طَبِيْبٌ', latin: 'Thabīb' },
+            { src: 'gambar/guru.png', answer: 'guru', arabic: 'مُدَرِّسٌ', latin: 'Mudarris' },
+            { src: 'gambar/petani.png', answer: 'petani', arabic: 'فَلَّاح', latin: 'Fallāḥ' },
+            { src: 'gambar/polisi.png', answer: 'polisi', arabic: 'شُرْطِيٌّ', latin: 'Shurṭī' },
+            { src: 'gambar/pemadam.png', answer: 'pemadam kebakaran', arabic: 'رجل اطفاء', latin: 'Rajul iṭfāʼ' },
+            { src: 'gambar/tentara.png', answer: 'tentara', arabic: 'جندي', latin: 'Jundī' },
+            { src: 'gambar/montir.png', answer: 'montir', arabic: 'ميكانيكي', latin: 'Mīkānīkī' },
+            { src: 'gambar/pilot.png', answer: 'pilot', arabic: 'طَيَّارٌ', latin: 'Ṭayyār' },
+            { src: 'gambar/nelayan.png', answer: 'nelayan', arabic: 'صَيَّاد', latin: 'Ṣayyād' }
         ];
 
         let currentImageIndex = 0;
@@ -41,7 +43,7 @@
 
         function getRandomImages() {
             const shuffled = images.sort(() => 0.5 - Math.random());
-            return shuffled.slice(0, 5);
+            return shuffled.slice(0, 5); // pilih 5 random
         }
 
         function loadNextImage() {
@@ -49,10 +51,14 @@
                 const currentImage = selectedImages[currentImageIndex];
                 document.getElementById('image').style.display = 'block';
                 document.getElementById('image').src = currentImage.src;
+                document.getElementById('latinText').innerText = currentImage.latin;
                 generateOptions(currentImage.arabic);
                 document.getElementById('message').innerText = '';
             } else {
-                document.getElementById('optionsContainer').innerHTML = ''; 
+                // Game selesai
+                document.getElementById('optionsContainer').innerHTML = '';
+                document.getElementById('image').style.display = 'none';
+                document.getElementById('latinText').innerText = '';
                 if (score === selectedImages.length) {
                     document.getElementById('imageContainer').innerHTML = `
                         <img src="gambar/jempol.gif" alt="GIF Lucu" style="max-width: 100%; max-height: 100%;">
@@ -65,14 +71,14 @@
                         <p>Skor akhir Anda adalah ${score} dari ${selectedImages.length}.</p>
                     `;
                 }
-                document.getElementById('image').style.display = 'none';
             }
         }
 
         function generateOptions(correctArabic) {
             const optionsContainer = document.getElementById('optionsContainer');
-            optionsContainer.innerHTML = ''; 
+            optionsContainer.innerHTML = '';
 
+            // Acak opsi jawaban
             const shuffledImages = images.sort(() => 0.5 - Math.random()).slice(0, 4);
             if (!shuffledImages.some(img => img.arabic === correctArabic)) {
                 shuffledImages[Math.floor(Math.random() * 4)] = selectedImages[currentImageIndex];
