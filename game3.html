@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Puzzle Huruf Hijaiyah - Multi Level</title>
+    <title>Game Puzzle Profesi - Multi Level</title>
     <link rel="stylesheet" href="css/game3.css">
 </head>
 <body>
     <header>
-        Game Puzzle Huruf Hijaiyah
+        Game Puzzle Profesi
         <button class="back-button" onclick="history.back()">Kembali</button>
     </header>
 
     <div class="container">
-        <h1>Susun huruf hijaiyah sesuai dengan gambar</h1>
+        <h1>Susun huruf Arab nama profesi sesuai gambar</h1>
         <div class="image-container">
             <img id="questionImage" src="" alt="Gambar Soal" style="width: 150px; height: auto;">
         </div>
@@ -33,11 +33,11 @@
 
     <script>
         const levels = [
-            { image: "gambar/kucing.jpg", letters: ["ق", "ط", "ة"] },
-            { image: "gambar/meja.jpg", letters: ["ط", "ا", "و", "ل", "ة"] },
-            { image: "gambar/guru.jpg", letters: ["م", "ع", "ل", "م"] },
-            { image: "gambar/pintu.jpg", letters: ["ب", "ا", "ب"] },
-          
+            { image: "gambar/dokter.png", letters: ["ط", "ب", "ي", "ب", "ٌ"] },        // طَبِيْبٌ
+            { image: "gambar/guru.png", letters: ["م", "د", "ر", "س", "ٌ"] },          // مُدَرِّسٌ
+            { image: "gambar/petani.png", letters: ["ف", "ل", "ا", "ح"] },            // فَلَّاح
+            { image: "gambar/polisi.png", letters: ["ش", "ر", "ط", "ي", "ٌ", "ّ"] },   // شُرْطِيٌّ
+            { image: "gambar/pilot.png", letters: ["ط", "ي", "ا", "ر", "ٌ", "ّ"] }     // طَيَّارٌ
         ];
         
         let currentLevel = 0;
@@ -143,3 +143,4 @@
     </script>
 </body>
 </html>
+
